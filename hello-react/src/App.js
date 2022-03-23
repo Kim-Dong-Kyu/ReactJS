@@ -1,24 +1,14 @@
-import logo from './logo.svg';
+import logo from './logo.svg'; /*import 특저 파일을 불러 오는 것을 의미*/ 
 import './App.css';
 
 function App() {
+  const v_react = "React";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/*주석입니다*/}
+      <h1 className="react-Test">{v_react} Test</h1>
+      /*이렇게 하면 주석 안됨*/ 
+    </> 
   );
 }
 
