@@ -1,9 +1,8 @@
 import logo from './logo.svg'; /*import 특저 파일을 불러 오는 것을 의미*/ 
 import './App.css';
-import Counter from './state/Counter';
-
+import Input from './event/Input';
   const App = () => {
-    return <Counter>리액트</Counter>
+    return <Input></Input>;
   }
 
 export default App;
