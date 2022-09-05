@@ -1,7 +1,12 @@
 import logo from './logo.svg'; /*import 특저 파일을 불러 오는 것을 의미*/ 
-import Update from './LifeCycle/Update'
+import Counter from './Hooks/Counter'
+import Info from './Hooks/Info'
   const App = () => {
-    return <Update>마운트</Update>;
+    return <Counter></Counter>;
   }
 
-export default App;
+  const info = () => {
+    return <Info></Info>
+  };
+
+export default info;
