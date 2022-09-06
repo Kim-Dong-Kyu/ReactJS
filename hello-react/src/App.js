@@ -9,4 +9,4 @@ import Info from './Hooks/Info'
     return <Info></Info>
   };
 
-export default info;
+export default App, info;
