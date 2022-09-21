@@ -3,6 +3,8 @@ import Counter from './Hooks/Counter'
 import Info from './Hooks/Info'
 import Reducer from './Hooks/Reducer'
 import { useState } from 'react';
+import UseMemo from './Hooks/UseMemo';
+
 
   const App = () => {
     /*const [visible, setVisible] = useState(false);
@@ -16,7 +18,7 @@ import { useState } from 'react';
         {visible && <Info/>}
       </div>
     )*/
-    return <Reducer></Reducer>
+    return <UseMemo></UseMemo>
 
   };
 
