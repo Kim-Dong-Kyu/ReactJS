@@ -2,24 +2,88 @@ import logo from './logo.svg'; /*import 특저 파일을 불러 오는 것을 �
 import Counter from './Hooks/Counter'
 import Info from './Hooks/Info'
 import Reducer from './Hooks/Reducer'
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import UseMemo from './Hooks/UseMemo';
 
 
   const App = () => {
-    /*const [visible, setVisible] = useState(false);
-     <div>
-        <button onClick={()=> {
-            setVisible(!visible);
-          }
-        }>
-          {visible ? '보이기' : '숨기기'}
-        </button>
-        {visible && <Info/>}
-      </div>
-    )*/
-    return <UseMemo></UseMemo>
+    const nextId = useRef(1);
+    const [form, setForm] = useState({name : '', username : ''});
+    const [data, setData] = useState({
+      array :[], 
+      uselessValue : null
+    });
 
+    /*input 수정 함수*/     
+    const onChange = useCallback(
+      (e) => {
+        const {name, value} = e.target;
+        setForm({
+          ...form,
+          [name] : [value ]
+        });
+      },
+      [form],
+    )
+
+    /*form 등록을 위한 함수*/
+    const onSubmit = useCallback(
+      (e) => {
+        e.preventDefault();
+
+        const info  = {
+          id : nextId.current, 
+          name : form.name, 
+          username : form.username
+        };
+
+        // array 새 항목 등록
+        setData({
+          ...date, 
+          array : data.array.concat(info);
+        })
+
+        //form 초기화
+        setForm({
+          name : '', 
+          username : ''
+        });
+        nextId.current += 1;
+      },
+      [data, form.name, form.usename]
+    );
+
+    //항목을 삭제하는 함수
+    const onRemove = useCallback(
+      id => {
+        setData({
+          ...data, 
+          array:data.array.filter(info => info.id !==id)
+        });
+      },
+      [data]
+    )
+
+    return(
+      <div>
+        <form onSubmit={onSubmit}>
+          <input name ="username" placeholder='id' value={form.username} onChange ={onChange}>          
+          </input>
+          <input name="name" placeholder="name" value ={form.name} onChange={onChange}>
+          </input>
+          <button type="submit">insert</button>
+        </form>
+          <div>
+            <ul>
+              {data.array.map(info=>(
+                <li key={info.id} onClick ={()=> onRemove(info.id)}>
+                  {info.username} ({info.name})
+                </li>
+              ))}
+            </ul>
+          </div>
+      </div>
+    )
   };
 
 export default App;
