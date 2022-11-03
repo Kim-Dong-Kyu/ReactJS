@@ -2,11 +2,10 @@ import logo from './logo.svg'; /*import 특저 파일을 불러 오는 것을 �
 import Counter from './Hooks/Counter'
 import Info from './Hooks/Info'
 import Reducer from './Hooks/Reducer'
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import UseMemo from './Hooks/UseMemo';
 
-
-  const App = () => {
+const App = () => {
     const nextId = useRef(1);
     const [form, setForm] = useState({name : '', username : ''});
     const [data, setData] = useState({
@@ -39,9 +38,9 @@ import UseMemo from './Hooks/UseMemo';
 
         // array 새 항목 등록
         setData({
-          ...date, 
-          array : data.array.concat(info);
-        })
+          ...data, 
+          array : data.array.concat(info)
+        });
 
         //form 초기화
         setForm({
